@@ -1,0 +1,41 @@
+doctrine:
+    dbal:
+        default_connection: v2
+        connections:
+            v1:
+                # configure these for your database server
+                url: '%env(DATABASE_URL_V1)%'
+                driver: 'pdo_mysql'
+                server_version: '5.7'
+                charset: utf8mb4
+            v2:
+                # configure these for your database server
+                url: '%env(DATABASE_URL_V2)%'
+                driver: 'pdo_mysql'
+                server_version: '5.7'
+                charset: utf8mb4
+
+    orm:
+        auto_generate_proxy_classes: true
+        default_entity_manager: v2
+        entity_managers:
+            v2:
+                connection: v2
+                mappings:
+                    v2:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/V2'
+                        prefix: 'App\Entity\V2'
+                        alias: v2
+            v1:
+                connection: v1
+                mappings:
+                    v1:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/V1'
+                        prefix: 'App\Entity\V1'
+                        alias: v1
+
+

@@ -1,0 +1,10 @@
+
+# No endpoint needed to generate JWT tokens. ORCA backend public key is installed here, so token signed there can be used here too
+#api_login_check:
+#    path: /api/login_check
+
+apiV2:
+    resource: ../../src/Controller/V2
+    type: annotation
+    prefix: /api/v2
+
