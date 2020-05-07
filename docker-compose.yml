@@ -19,3 +19,11 @@ services:
       MYSQL_PASSWORD: migrationapp
     ports:
       - 3311:3306
+    
+  db_mongo:
+    image: mongo:4.2.6
+    ports:
+        - 8082:8081
+    environment:
+        MONGO_INITDB_ROOT_USERNAME: root
+        MONGO_INITDB_ROOT_PASSWORD: migrationapp

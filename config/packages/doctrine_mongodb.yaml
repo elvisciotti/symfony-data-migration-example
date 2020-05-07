@@ -1,0 +1,20 @@
+# to add more options, check full reference
+# bin/console config:dump-reference doctrine_mongodb
+doctrine_mongodb:
+    connections:
+        default:
+            server: '%env(MONGODB_URL)%'
+            # server: "%mongodb_server%"
+            options: {}
+    default_database: migrationapp
+    document_managers:
+        default:
+            # auto_mapping: true
+            mappings: 
+                mongo:
+                    mapping:              true
+                    type:                 annotation
+                    dir:                  '%kernel.project_dir%/src/Entity/Mongo'
+                    prefix: 'App\Entity\Mongo'
+                    alias: Mongo
+                    is_bundle:  false

@@ -1,16 +1,26 @@
-# Symfony RESTful Swagger skeleton + two-db connection data migration 
+# Symfony RESTful service sample
 
-Symfony 4.3 base app with 
+with swagger skeleton + two-db connection data migration + mongoDb connection
 
- * two doctrine connection and model sets (`src/Entity/V1`=old schema, `src/Entity/V2`=new schema) 
+Symfony 4.3 RESTful api with code to migrate data (two Doctrine/MySQL connections + Command script using both), use endpoint (Swagger, Etag) and **MongoDB** connection, to use as a reference.
 
- * Console Command `\App\Command\MigrateV1ToV2Command` to migrate old database to new one with truncate flag / interactive answer if flag is missing
+## Two connection and Data migration
 
-* Two sample endpoints with *Swagger* config, Symfony native *serialization* with custom *groups* from URLs, *E-tags* for caching same content by hash
+*  Models under `src/Entity/V1` (old schema) and `src/Entity/V2` (new schema) 
+* Console Command `\App\Command\MigrateV1ToV2Command` to migrate V1 -> V2 + interactive options to truncate data
 
-* *Docker* containers for the two db instances for local usage, on ports 3310 and 3311
+## RESTful api
 
-Extracted from a project I've used in the past, to use as a reference for new projects.
+Two sample endpoints with *Swagger* config, Symfony native *serialization* with custom *groups* from URLs, *E-tags* for caching same content by hash
+
+# MongoDB
+
+    Bash into it:
+    docker-compose up -d
+    docker exec -it symfony-restful-api-data-migration-skeleton_db_mongo_1 bash
+
+# Orchestration
+*Docker* containers for the two db instances, and mongodb, for local usage, on ports 3310 and 3311
 
 # How to run
 On a machine with PHP 7.2 or more:
